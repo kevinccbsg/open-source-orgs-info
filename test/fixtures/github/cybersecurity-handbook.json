@@ -1,0 +1,178 @@
+[
+  {
+      "name": ".github",
+      "path": ".github",
+      "sha": "ef4d5558cbe26c93171c8764201af9b07a1e523c",
+      "size": 0,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/.github?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/.github",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/ef4d5558cbe26c93171c8764201af9b07a1e523c",
+      "download_url": null,
+      "type": "dir",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/.github?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/ef4d5558cbe26c93171c8764201af9b07a1e523c",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/.github"
+      }
+  },
+  {
+      "name": ".gitignore",
+      "path": ".gitignore",
+      "sha": "9c5a9470d6b00298ae881b50557e112e964f090e",
+      "size": 1835,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/.gitignore?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/.gitignore",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/9c5a9470d6b00298ae881b50557e112e964f090e",
+      "download_url": "https://raw.githubusercontent.com/guidesmiths/systemic-aws-s3/main/.gitignore",
+      "type": "file",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/.gitignore?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/9c5a9470d6b00298ae881b50557e112e964f090e",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/.gitignore"
+      }
+  },
+  {
+      "name": "LICENSE",
+      "path": "LICENSE",
+      "sha": "388d2c91eeb88a5e2f33cd3d033f303b1c5de282",
+      "size": 1072,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/LICENSE?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/LICENSE",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/388d2c91eeb88a5e2f33cd3d033f303b1c5de282",
+      "download_url": "https://raw.githubusercontent.com/guidesmiths/systemic-aws-s3/main/LICENSE",
+      "type": "file",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/LICENSE?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/388d2c91eeb88a5e2f33cd3d033f303b1c5de282",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/LICENSE"
+      }
+  },
+  {
+      "name": "README.md",
+      "path": "README.md",
+      "sha": "5e925bece04d8354f85d45952a5cda652d13612d",
+      "size": 461,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/README.md?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/README.md",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/5e925bece04d8354f85d45952a5cda652d13612d",
+      "download_url": "https://raw.githubusercontent.com/guidesmiths/systemic-aws-s3/main/README.md",
+      "type": "file",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/README.md?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/5e925bece04d8354f85d45952a5cda652d13612d",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/README.md"
+      }
+  },
+  {
+      "name": "commands",
+      "path": "commands",
+      "sha": "a92ad5da1528e28e0524e8ac4a5ce51bd71514b4",
+      "size": 0,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/commands?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/commands",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/a92ad5da1528e28e0524e8ac4a5ce51bd71514b4",
+      "download_url": null,
+      "type": "dir",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/commands?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/a92ad5da1528e28e0524e8ac4a5ce51bd71514b4",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/commands"
+      }
+  },
+  {
+      "name": "docker",
+      "path": "docker",
+      "sha": "6d28ea2da38e2e6b19b8cccf13598b27dfe806bd",
+      "size": 0,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/docker?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/docker",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/6d28ea2da38e2e6b19b8cccf13598b27dfe806bd",
+      "download_url": null,
+      "type": "dir",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/docker?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/6d28ea2da38e2e6b19b8cccf13598b27dfe806bd",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/docker"
+      }
+  },
+  {
+      "name": "index.js",
+      "path": "index.js",
+      "sha": "17cd200dd833cbc7a24f809e0994d443dce2c0b2",
+      "size": 528,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/index.js?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/index.js",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/17cd200dd833cbc7a24f809e0994d443dce2c0b2",
+      "download_url": "https://raw.githubusercontent.com/guidesmiths/systemic-aws-s3/main/index.js",
+      "type": "file",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/index.js?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/17cd200dd833cbc7a24f809e0994d443dce2c0b2",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/index.js"
+      }
+  },
+  {
+      "name": "jest.config.js",
+      "path": "jest.config.js",
+      "sha": "4684869513dbbdd67813d6d819762764ec8ee9bb",
+      "size": 56,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/jest.config.js?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/jest.config.js",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/4684869513dbbdd67813d6d819762764ec8ee9bb",
+      "download_url": "https://raw.githubusercontent.com/guidesmiths/systemic-aws-s3/main/jest.config.js",
+      "type": "file",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/jest.config.js?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/4684869513dbbdd67813d6d819762764ec8ee9bb",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/jest.config.js"
+      }
+  },
+  {
+      "name": "package-lock.json",
+      "path": "package-lock.json",
+      "sha": "3703ea22b2925e16da8cb88f2d6efacf1d92ee45",
+      "size": 249353,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/package-lock.json?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/package-lock.json",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/3703ea22b2925e16da8cb88f2d6efacf1d92ee45",
+      "download_url": "https://raw.githubusercontent.com/guidesmiths/systemic-aws-s3/main/package-lock.json",
+      "type": "file",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/package-lock.json?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/3703ea22b2925e16da8cb88f2d6efacf1d92ee45",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/package-lock.json"
+      }
+  },
+  {
+      "name": "package.json",
+      "path": "package.json",
+      "sha": "260c54269cba3d289d901e3f759ef0d2f0f31f5a",
+      "size": 1276,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/package.json?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/package.json",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/260c54269cba3d289d901e3f759ef0d2f0f31f5a",
+      "download_url": "https://raw.githubusercontent.com/guidesmiths/systemic-aws-s3/main/package.json",
+      "type": "file",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/package.json?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/blobs/260c54269cba3d289d901e3f759ef0d2f0f31f5a",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/blob/main/package.json"
+      }
+  },
+  {
+      "name": "test",
+      "path": "test",
+      "sha": "aea334f5108737148256edf934dda8149dec09c1",
+      "size": 0,
+      "url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/test?ref=main",
+      "html_url": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/test",
+      "git_url": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/aea334f5108737148256edf934dda8149dec09c1",
+      "download_url": null,
+      "type": "dir",
+      "_links": {
+          "self": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/contents/test?ref=main",
+          "git": "https://api.github.com/repos/guidesmiths/systemic-aws-s3/git/trees/aea334f5108737148256edf934dda8149dec09c1",
+          "html": "https://github.com/guidesmiths/systemic-aws-s3/tree/main/test"
+      }
+  }
+]
