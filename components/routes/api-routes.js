@@ -29,6 +29,17 @@ module.exports = () => {
       }
     });
 
+    app.get('/api/v1/orgs/:orgName/repos', /* validateRequest(), */ async (req, res, next) => {
+      try {
+        const { orgName } = req.params;
+        const filters = req.query;
+        const repos = await controller.orgs.fetch(orgName, filters);
+        return res.json(repos);
+      } catch (err) {
+        return next(tagError(err));
+      }
+    });
+
     app.use(handleHttpError(logger));
 
     return Promise.resolve();

@@ -1,13 +1,12 @@
-
 module.exports = repo => ({
   id: repo.id,
   name: repo.name,
   url: repo.url,
   description: repo.description,
-  url: repo.url,
   created_at: repo.created_at,
   updated_at: repo.updated_at,
   size: repo.size,
+  org: repo.org,
   stargazers_count: repo.stargazers_count,
   watchers_count: repo.watchers_count,
   language: repo.language,
