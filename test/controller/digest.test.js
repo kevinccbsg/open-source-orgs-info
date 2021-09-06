@@ -8,7 +8,6 @@ const systemicAwsS3 = require('../fixtures/github/systemic-aws-s3.json');
 const cybersecurityHandbook = require('../fixtures/github/cybersecurity-handbook.json');
 const mood = require('../fixtures/github/mood.json');
 
-
 describe('Digest method Tests', () => {
   let controllerAPI;
   let pgAPI;
@@ -26,7 +25,7 @@ describe('Digest method Tests', () => {
 
   after(() => sys.stop());
 
-  it.only('should save the right amount of users', async () => {
+  it('should save the right amount of users', async () => {
     const testOrg = 'test-org';
     nock('https://api.github.com')
       .get(`/orgs/${testOrg}/repos?type=public&sort=updated`)
