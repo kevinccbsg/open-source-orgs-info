@@ -34,6 +34,7 @@ module.exports = () => {
       const completedRepo = {
         ...repo,
         ci,
+        org,
         linter_file: linterFile,
         has_linter: hasLinter,
         has_tests: hasTests,

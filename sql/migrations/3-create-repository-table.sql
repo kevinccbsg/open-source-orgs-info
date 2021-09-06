@@ -4,6 +4,7 @@ CREATE TABLE content.repository (
   name VARCHAR (50) UNIQUE NOT NULL,
   url VARCHAR (200) UNIQUE NOT NULL,
   description TEXT,
+  org VARCHAR(150),
   created_at TIMESTAMP WITH TIME ZONE NOT NULL,
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
   size INTEGER NOT NULL,
