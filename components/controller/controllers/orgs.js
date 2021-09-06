@@ -4,7 +4,7 @@ module.exports = () => {
   }) => {
     const fetch = async orgName => {
       logger.info(`Retrieving ${orgName} repositories`);
-      const repos = await store.getRepositories();
+      const repos = await store.getRepositories(orgName);
       logger.info(`sending ${repos.length} for org ${orgName}`);
       return repos;
     };

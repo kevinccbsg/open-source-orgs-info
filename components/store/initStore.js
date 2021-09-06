@@ -21,7 +21,7 @@ module.exports = () => {
         FROM
           ${pg.schema}.repository r
         WHERE
-          r.org = ${org}
+          r.org = '${org}'
       `);
       return rows;
     };

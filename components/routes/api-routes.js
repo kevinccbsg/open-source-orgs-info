@@ -29,7 +29,7 @@ module.exports = () => {
       }
     });
 
-    app.get('/api/v1/orgs/:orgName/repos', validateRequest(), async (req, res, next) => {
+    app.get('/api/v1/orgs/:orgName/repos', /* validateRequest(), */ async (req, res, next) => {
       try {
         const { orgName } = req.params;
         const filters = req.query;
