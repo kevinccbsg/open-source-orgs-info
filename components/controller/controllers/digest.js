@@ -1,5 +1,7 @@
 module.exports = () => {
-  const start = async ({ logger, github, store, config }) => {
+  const start = async ({
+    logger, github, store, config,
+  }) => {
     const repoDetails = async (org, repoName) => {
       const { data: repositoryFiles } = await github.getRepoContent({
         urlParams: {
@@ -17,24 +19,24 @@ module.exports = () => {
     );
 
     const getExtraInfoFile = (files, exceptions) => {
-      const file = files.find(file => (
+      const infoFile = files.find(file => (
         exceptions.includes(file.path)
-      ))
-      return file ? file.path : null;
+      ));
+      return infoFile ? infoFile.path : null;
     };
 
     const addExtraParameters = async (org, repo) => {
       const files = await repoDetails(org, repo.name);
       const ci = getExtraInfoFile(files, config.CIFiles);
-      const linter_file = getExtraInfoFile(files, config.linterFiles);
-      const has_linter = getExtraInfo(files, config.linterFiles);
-      const has_tests = getExtraInfo(files, config.testFiles);
+      const linterFile = getExtraInfoFile(files, config.linterFiles);
+      const hasLinter = getExtraInfo(files, config.linterFiles);
+      const hasTests = getExtraInfo(files, config.testFiles);
       const completedRepo = {
         ...repo,
         ci,
-        linter_file,
-        has_linter,
-        has_tests,
+        linter_file: linterFile,
+        has_linter: hasLinter,
+        has_tests: hasTests,
       };
       return store.saveRepository(completedRepo);
     };
