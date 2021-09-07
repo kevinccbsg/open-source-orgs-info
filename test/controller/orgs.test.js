@@ -55,4 +55,12 @@ describe('Orgs API endpoint', () => {
     .then(({ body }) => {
       expect(body).to.have.length(5);
     }));
+
+  it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with test filter', async () => (
+    request.get(`/api/v1/orgs/${testOrg}/repos?tests=true`)
+      .expect(200)
+      .then(({ body }) => {
+        expect(body).to.have.length(3);
+      })
+  ));
 });
