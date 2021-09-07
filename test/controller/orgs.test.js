@@ -63,4 +63,20 @@ describe('Orgs API endpoint', () => {
         expect(body).to.have.length(3);
       })
   ));
+
+  it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with test filter', async () => (
+    request.get(`/api/v1/orgs/${testOrg}/repos?linter=true`)
+      .expect(200)
+      .then(({ body }) => {
+        expect(body).to.have.length(0);
+      })
+  ));
+
+  it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with test filter', async () => (
+    request.get(`/api/v1/orgs/${testOrg}/repos?maxFiles=200`)
+      .expect(200)
+      .then(({ body }) => {
+        expect(body).to.have.length(1);
+      })
+  ));
 });

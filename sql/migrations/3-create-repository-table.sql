@@ -27,8 +27,8 @@ CREATE TABLE content.repository (
   -- custom logic columns
   ci VARCHAR(50),
   linter_file VARCHAR(50),
-  has_linter BOOLEAN,
-  has_tests BOOLEAN,
+  has_linter BOOLEAN DEFAULT FALSE,
+  has_tests BOOLEAN DEFAULT FALSE,
   -- digest columns
   digest_created_on TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
   digest_updated_on TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
