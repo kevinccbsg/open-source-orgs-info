@@ -49,7 +49,6 @@ describe('Digest method Tests', () => {
     /** -- PR reviews details mock -- */
     await controllerAPI.digest.digestOrgsRepos(testOrg);
     const { rows: repositories } = await pgAPI.query('select-repos');
-    console.log(repositories);
     expect(repositories).to.have.length(5);
   });
 });
