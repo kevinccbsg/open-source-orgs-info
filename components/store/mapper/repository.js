@@ -1,4 +1,4 @@
-module.exports = repo => ({
+const repositoryToDB = repo => ({
   id: repo.id,
   name: repo.name,
   url: repo.url,
@@ -28,3 +28,20 @@ module.exports = repo => ({
   has_linter: repo.has_linter,
   has_tests: repo.has_tests,
 });
+
+const repositoryToBO = repository => ({
+  name: repository.name,
+  url: repository.url,
+  description: repository.description,
+  updatedAt: repository.updated_at,
+  size: repository.size,
+  hasIssues: repository.has_issues,
+  hasLinter: repository.has_linter,
+  hasTests: repository.has_tests,
+  ci: repository.ci,
+});
+
+module.exports = {
+  repositoryToDB,
+  repositoryToBO,
+};

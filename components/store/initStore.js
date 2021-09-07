@@ -1,5 +1,5 @@
 const isEmpty = require('lodash/isEmpty');
-const repository = require('./mapper/repository');
+const { repositoryToDB, repositoryToBO } = require('./mapper/repository');
 
 module.exports = () => {
   const start = async ({ pg }) => {
@@ -22,7 +22,7 @@ module.exports = () => {
 
     const saveRepository = async repo => (
       pg
-        .upsert(`${pg.schema}.repository`, repository(repo))
+        .upsert(`${pg.schema}.repository`, repositoryToDB(repo))
     );
 
     const getRepositories = async (org, filters) => {
@@ -45,7 +45,7 @@ module.exports = () => {
         WHERE
           ${whereClauses}
       `);
-      return rows;
+      return rows.map(repositoryToBO);
     };
 
     return { saveRepository, getRepositories };
