@@ -45,6 +45,10 @@ module.exports = () => {
       }
     });
 
+    app.get('/', (req, res) => (
+      res.send('open-source-info API. Please check our Docs in "/api-docs" path.')
+    ));
+
     app.use(handleHttpError(logger));
 
     return Promise.resolve();
