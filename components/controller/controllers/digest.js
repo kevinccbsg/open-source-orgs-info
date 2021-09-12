@@ -4,7 +4,7 @@ module.exports = () => {
   }) => {
     const repoDetails = async (org, repoName) => {
       const { data: repositoryFiles } = await github.getRepoContent({
-        urlParams: {
+        params: {
           org,
           repo: repoName,
         },
@@ -48,10 +48,10 @@ module.exports = () => {
     const digestOrgsRepos = async org => {
       logger.info(`Digesting organization repositories ${org}`);
       const { data: repositories } = await github.getRepos({
-        urlParams: {
+        params: {
           org,
         },
-        params: {
+        query: {
           type: 'public',
           sort: 'updated',
         },
