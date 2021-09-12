@@ -10,7 +10,7 @@
   "scripts": {
     "docker": "docker-compose --file docker-compose.yml pull && docker-compose --file docker-compose.yml up -d --force-recreate",
     "local": "SERVICE_ENV=local node index.js",
-    "start": "node index.js",
+    "start": "NODE_ENV=production SERVICE_ENV=production node index.js",
     "test": "SERVICE_ENV=test mocha --reporter spec './test/**/*.test.js'",
     "test-ci": "SERVICE_ENV=test mocha --reporter mocha-junit-reporter",
     "lint": "eslint .",
