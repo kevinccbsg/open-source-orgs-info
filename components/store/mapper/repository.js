@@ -1,7 +1,7 @@
 const repositoryToDB = repo => ({
   id: repo.id,
   name: repo.name,
-  url: repo.url,
+  url: repo.html_url,
   description: repo.description,
   created_at: repo.created_at,
   updated_at: repo.updated_at,
