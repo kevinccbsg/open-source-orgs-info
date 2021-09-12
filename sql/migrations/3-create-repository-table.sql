@@ -10,7 +10,7 @@ CREATE TABLE content.repository (
   size INTEGER NOT NULL,
   stargazers_count INTEGER NOT NULL,
   watchers_count INTEGER NOT NULL,
-  language VARCHAR(50) NOT NULL,
+  language VARCHAR(50),
   has_issues BOOLEAN NOT NULL,
   has_projects BOOLEAN NOT NULL,
   has_downloads BOOLEAN NOT NULL,

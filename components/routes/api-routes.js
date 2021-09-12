@@ -16,7 +16,7 @@ module.exports = () => {
     app.post('/api/v1/repository/digest', validateRequest(), async (req, res, next) => {
       try {
         const { org, repo } = req.body;
-        await controller.digest.digestRepo(org, repo);
+        await controller.digest.digestOrgsRepos(org, repo);
         return res.json({ success: true });
       } catch (err) {
         return next(tagError(err));

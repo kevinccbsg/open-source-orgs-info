@@ -26,7 +26,9 @@ module.exports = () => {
     };
 
     const addExtraParameters = async (org, repo) => {
+      logger.info(`Digesting org ${org} repository ${repo.name}`);
       const files = await repoDetails(org, repo.name);
+      logger.info(`Org ${org} repository ${repo.name} file details retrieved...`);
       const ci = getExtraInfoFile(files, config.CIFiles);
       const linterFile = getExtraInfoFile(files, config.linterFiles);
       const hasLinter = getExtraInfo(files, config.linterFiles);
@@ -39,6 +41,7 @@ module.exports = () => {
         has_linter: hasLinter,
         has_tests: hasTests,
       };
+      logger.info(`Saving org ${org} repository ${repo.name}...`);
       return store.saveRepository(completedRepo);
     };
 

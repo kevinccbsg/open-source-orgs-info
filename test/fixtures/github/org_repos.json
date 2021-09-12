@@ -181,7 +181,7 @@
         "size": 2299,
         "stargazers_count": 302,
         "watchers_count": 302,
-        "language": "JavaScript",
+        "language": null,
         "has_issues": true,
         "has_projects": true,
         "has_downloads": true,
@@ -297,13 +297,7 @@
         "archived": false,
         "disabled": false,
         "open_issues_count": 6,
-        "license": {
-            "key": "mit",
-            "name": "MIT License",
-            "spdx_id": "MIT",
-            "url": "https://api.github.com/licenses/mit",
-            "node_id": "MDc6TGljZW5zZTEz"
-        },
+        "license": null,
         "forks": 0,
         "open_issues": 6,
         "watchers": 0,
