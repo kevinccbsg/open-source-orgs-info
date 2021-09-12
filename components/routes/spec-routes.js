@@ -9,7 +9,7 @@
  * @typedef {object} RepositoriesResponse
  * @property {string} name.required - Repository name
  * @property {string} url.required - Repository url
- * @property {string} description.required - Repository description
+ * @property {string|null} description.required - Repository description
  * @property {string} updatedAt.required - When Repository was updated
  * @property {integer} size.required - Repository file size
  * @property {boolean} hasIssues.required - Repository includes issues
