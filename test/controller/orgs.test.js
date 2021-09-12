@@ -3,6 +3,7 @@ const expect = require('expect.js');
 const supertest = require('supertest');
 const system = require('../../system');
 const orgRepos = require('../fixtures/github/org_repos.json');
+const orgDetails = require('../fixtures/github/org_details.json');
 const reactFormBuilder = require('../fixtures/github/react-form-builder.json');
 const rascal = require('../fixtures/github/rascal.json');
 const systemicAwsS3 = require('../fixtures/github/systemic-aws-s3.json');
@@ -26,7 +27,10 @@ describe('Orgs API endpoint', () => {
   beforeEach(async () => {
     await pgAPI.query('truncate-all');
     nock('https://api.github.com')
-      .get(`/orgs/${testOrg}/repos?type=public&sort=updated`)
+      .get(`/orgs/${testOrg}`)
+      .reply(200, orgDetails);
+    nock('https://api.github.com')
+      .get(`/orgs/${testOrg}/repos?type=public&sort=updated&per_page=100&page=1`)
       .reply(200, orgRepos);
     /** -- PR details mock -- */
     nock('https://api.github.com')

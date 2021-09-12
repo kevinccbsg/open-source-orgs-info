@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 module.exports = () => {
   const start = async ({
     logger, github, store, config,
@@ -47,18 +48,29 @@ module.exports = () => {
 
     const digestOrgsRepos = async org => {
       logger.info(`Digesting organization repositories ${org}`);
-      const { data: repositories } = await github.getRepos({
+      const { data: orgDetail } = await github.orgDetails({
         params: {
           org,
         },
-        query: {
-          type: 'public',
-          sort: 'updated',
-        },
       });
-      return Promise.all(
-        repositories.map(repo => addExtraParameters(org, repo)),
-      );
+      const publicRepos = orgDetail.public_repos;
+      const pages = Math.ceil(publicRepos / config.requestedRepos);
+      for (let index = 0; index < pages; index += 1) {
+        const { data: repositories } = await github.getRepos({
+          params: {
+            org,
+          },
+          query: {
+            type: 'public',
+            sort: 'updated',
+            per_page: config.requestedRepos,
+            page: (index + 1),
+          },
+        });
+        await Promise.all(
+          repositories.map(repo => addExtraParameters(org, repo)),
+        );
+      }
     };
     return { digestOrgsRepos };
   };

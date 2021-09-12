@@ -1,6 +1,7 @@
 const nock = require('nock');
 const expect = require('expect.js');
 const system = require('../../system');
+const orgDetails = require('../fixtures/github/org_details.json');
 const orgRepos = require('../fixtures/github/org_repos.json');
 const reactFormBuilder = require('../fixtures/github/react-form-builder.json');
 const rascal = require('../fixtures/github/rascal.json');
@@ -28,7 +29,10 @@ describe('Digest method Tests', () => {
   it('should save the right amount of users', async () => {
     const testOrg = 'test-org';
     nock('https://api.github.com')
-      .get(`/orgs/${testOrg}/repos?type=public&sort=updated`)
+      .get(`/orgs/${testOrg}`)
+      .reply(200, orgDetails);
+    nock('https://api.github.com')
+      .get(`/orgs/${testOrg}/repos?type=public&sort=updated&per_page=100&page=1`)
       .reply(200, orgRepos);
     /** -- PR details mock -- */
     nock('https://api.github.com')

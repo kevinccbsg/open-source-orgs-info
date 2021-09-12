@@ -80,6 +80,8 @@ module.exports = {
       CIFiles: ['.travis.yml', 'circleci', '.github'],
       linterFiles: ['.eslinrc', '.eslint.json', '.eslint.js'],
       testFiles: ['test', 'specs', 'tests'],
+      // number of results on each github request
+      requestedRepos: 100,
     },
   },
   /** --- Github API endpoints --- */
@@ -92,6 +94,11 @@ module.exports = {
       },
       getRepoContent: {
         url: 'https://api.github.com/repos/:org/:repo/contents',
+        method: 'get',
+        auth,
+      },
+      orgDetails: {
+        url: 'https://api.github.com/orgs/:org',
         method: 'get',
         auth,
       },
