@@ -38,7 +38,7 @@ module.exports = {
       password: process.env.POSTGRES_PASSWORD || 'password',
       host: process.env.POSTGRES_HOST || 'localhost',
       port: process.env.POSTGRES_PORT || 5432,
-      max: 10,
+      max: 3,
       migrations: [{
         directory: 'sql/migrations',
         filter: '\\.sql$',
