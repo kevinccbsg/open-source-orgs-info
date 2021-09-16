@@ -3,11 +3,28 @@ const expect = require('expect.js');
 const system = require('../../system');
 const orgDetails = require('../fixtures/github/org_details.json');
 const orgRepos = require('../fixtures/github/org_repos.json');
-const reactFormBuilder = require('../fixtures/github/react-form-builder.json');
-const rascal = require('../fixtures/github/rascal.json');
-const systemicAwsS3 = require('../fixtures/github/systemic-aws-s3.json');
-const cybersecurityHandbook = require('../fixtures/github/cybersecurity-handbook.json');
-const mood = require('../fixtures/github/mood.json');
+const {
+  rascalLinter,
+  systemicAwsS3Linter,
+  moodLinter,
+} = require('../fixtures/github/linterMocks');
+const {
+  rascalTest,
+  systemicAwsS3Test,
+  moodTest,
+} = require('../fixtures/github/testsMocks');
+const {
+  files: {
+    rascalCi,
+    systemicAwsS3Ci,
+    moodCi,
+  },
+  paths: {
+    rascalPaths,
+    systemicAwsS3Paths,
+    moodPaths,
+  },
+} = require('../fixtures/github/ciMocks');
 
 describe('Digest method Tests', () => {
   let controllerAPI;
@@ -34,25 +51,56 @@ describe('Digest method Tests', () => {
     nock('https://api.github.com')
       .get(`/orgs/${testOrg}/repos?type=public&sort=updated&per_page=100&page=1`)
       .reply(200, orgRepos);
-    /** -- PR details mock -- */
+    /** -- PR linter requests mock -- */
     nock('https://api.github.com')
-      .get(`/repos/${testOrg}/react-form-builder/contents`)
-      .reply(200, reactFormBuilder);
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+filename:.eslintrc+filename:.eslint.json+filename:.eslint.js')}`)
+      .reply(200, rascalLinter);
     nock('https://api.github.com')
-      .get(`/repos/${testOrg}/rascal/contents`)
-      .reply(200, rascal);
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+filename:.eslintrc+filename:.eslint.json+filename:.eslint.js')}`)
+      .reply(200, systemicAwsS3Linter);
+    // TODO: mood is a forked repository and this search does not work
     nock('https://api.github.com')
-      .get(`/repos/${testOrg}/systemic-aws-s3/contents`)
-      .reply(200, systemicAwsS3);
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+filename:.eslintrc+filename:.eslint.json+filename:.eslint.js')}`)
+      .reply(200, moodLinter);
+    /** -- PR tests requests mock -- */
     nock('https://api.github.com')
-      .get(`/repos/${testOrg}/cybersecurity-handbook/contents`)
-      .reply(200, cybersecurityHandbook);
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+filename:*.test.js+filename:*.specs.js+filename:*.tests.js+filename:*.spec.js')}`)
+      .reply(200, rascalTest);
     nock('https://api.github.com')
-      .get(`/repos/${testOrg}/mood/contents`)
-      .reply(200, mood);
-    /** -- PR reviews details mock -- */
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+filename:*.test.js+filename:*.specs.js+filename:*.tests.js+filename:*.spec.js')}`)
+      .reply(200, systemicAwsS3Test);
+    nock('https://api.github.com')
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+filename:*.test.js+filename:*.specs.js+filename:*.tests.js+filename:*.spec.js')}`)
+      .reply(200, moodTest);
+    /** -- PR ci requests mock -- */
+    nock('https://api.github.com')
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+filename:.travis.yml+filename:azure-pipelines.yml')}`)
+      .reply(200, rascalCi);
+    nock('https://api.github.com')
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+filename:.travis.yml+filename:azure-pipelines.yml')}`)
+      .reply(200, systemicAwsS3Ci);
+    nock('https://api.github.com')
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+filename:.travis.yml+filename:azure-pipelines.yml')}`)
+      .reply(200, moodCi);
+    /** -- PR ci Paths request mock -- */
+    nock('https://api.github.com')
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+path:.circleci+path:.github/workflows')}`)
+      .reply(200, rascalPaths);
+    nock('https://api.github.com')
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+path:.circleci+path:.github/workflows')}`)
+      .reply(200, systemicAwsS3Paths);
+    nock('https://api.github.com')
+      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+path:.circleci+path:.github/workflows')}`)
+      .reply(200, moodPaths);
+    /** -- test assertions -- */
     await controllerAPI.digest.digestOrgsRepos(testOrg);
     const { rows: repositories } = await pgAPI.query('select-repos');
-    expect(repositories).to.have.length(5);
+    const linterRepos = repositories.filter(repo => repo.has_linter && repo.linter_file);
+    expect(linterRepos).to.have.length(2);
+    const testRepos = repositories.filter(repo => repo.has_tests);
+    expect(testRepos).to.have.length(2);
+    const ciRepos = repositories.filter(repo => repo.ci);
+    expect(ciRepos).to.have.length(2);
+    expect(repositories).to.have.length(3);
   });
 });

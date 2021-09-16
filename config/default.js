@@ -76,10 +76,10 @@ module.exports = {
   /** --- controller config --- */
   controller: {
     digest: {
-      // TODO: improve these files
-      CIFiles: ['.travis.yml', 'circleci', '.github'],
-      linterFiles: ['.eslinrc', '.eslint.json', '.eslint.js'],
-      testFiles: ['test', 'specs', 'tests'],
+      CIFiles: ['.travis.yml', 'azure-pipelines.yml'],
+      CIPaths: ['.circleci', '.github/workflows'],
+      linterFiles: ['.eslintrc', '.eslint.json', '.eslint.js'],
+      testFiles: ['*.test.js', '*.specs.js', '*.tests.js', '*.spec.js'],
       // number of results on each github request
       requestedRepos: 100,
     },
@@ -87,6 +87,11 @@ module.exports = {
   /** --- Github API endpoints --- */
   github: {
     api: {
+      orgDetails: {
+        url: 'https://api.github.com/orgs/:org',
+        method: 'get',
+        auth,
+      },
       getRepos: {
         url: 'https://api.github.com/orgs/:org/repos',
         method: 'get',
@@ -97,8 +102,8 @@ module.exports = {
         method: 'get',
         auth,
       },
-      orgDetails: {
-        url: 'https://api.github.com/orgs/:org',
+      searchCode: {
+        url: 'https://api.github.com/search/code',
         method: 'get',
         auth,
       },

@@ -3,37 +3,43 @@ module.exports = () => {
   const start = async ({
     logger, github, store, config,
   }) => {
-    const repoDetails = async (org, repoName) => {
-      const { data: repositoryFiles } = await github.getRepoContent({
-        params: {
-          org,
-          repo: repoName,
+    const filterInfo = async (org, repoName, query) => {
+      const q = `repo:${org}/${repoName}+${query}`;
+      const { data: repositoryFiles } = await github.searchCode({
+        query: {
+          q,
         },
       });
       return repositoryFiles;
     };
 
-    const getExtraInfo = (files, exceptions) => (
-      files.some(file => (
-        exceptions.includes(file.path)
-      ))
+    const queryBuilder = type => files => (
+      files.map(file => (
+        `${type}:${file}`
+      )).join('+')
     );
 
-    const getExtraInfoFile = (files, exceptions) => {
-      const infoFile = files.find(file => (
-        exceptions.includes(file.path)
-      ));
-      return infoFile ? infoFile.path : null;
+    const filesQuery = queryBuilder('filename');
+    const pathQuery = queryBuilder('path');
+
+    const getCIInfo = async (org, repoName) => {
+      const testsResults = await filterInfo(org, repoName, filesQuery(config.CIFiles));
+      if (testsResults && testsResults.items.length !== 0) {
+        const testFile = testsResults.items[0].name;
+        return testFile;
+      }
+      const githubAction = await filterInfo(org, repoName, pathQuery(config.CIPaths));
+      return githubAction && githubAction.items.length !== 0 ? 'githubActions' : null;
     };
 
     const addExtraParameters = async (org, repo) => {
       logger.info(`Digesting org ${org} repository ${repo.name}`);
-      const files = await repoDetails(org, repo.name);
-      logger.info(`Org ${org} repository ${repo.name} file details retrieved...`);
-      const ci = getExtraInfoFile(files, config.CIFiles);
-      const linterFile = getExtraInfoFile(files, config.linterFiles);
-      const hasLinter = getExtraInfo(files, config.linterFiles);
-      const hasTests = getExtraInfo(files, config.testFiles);
+      const ci = await getCIInfo(org, repo.name);
+      const linterResults = await filterInfo(org, repo.name, filesQuery(config.linterFiles));
+      const hasLinter = linterResults && linterResults.items.length !== 0;
+      const linterFile = hasLinter ? linterResults.items[0].name : null;
+      const testsResults = await filterInfo(org, repo.name, filesQuery(config.testFiles));
+      const hasTests = testsResults && testsResults.items.length !== 0;
       const completedRepo = {
         ...repo,
         ci,
