@@ -2,7 +2,7 @@ const expect = require('expect.js');
 const supertest = require('supertest');
 const system = require('../../system');
 
-describe.skip('Orgs API endpoint', () => {
+describe('Orgs API endpoint', () => {
   const testOrg = 'test-org';
   let pgAPI;
   let request;
@@ -16,6 +16,7 @@ describe.skip('Orgs API endpoint', () => {
 
   beforeEach(async () => {
     await pgAPI.query('truncate-all');
+    await pgAPI.query('initial-mock-data');
   });
 
   after(() => sys.stop());
@@ -23,26 +24,26 @@ describe.skip('Orgs API endpoint', () => {
   it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos"', async () => request.get(`/api/v1/orgs/${testOrg}/repos`)
     .expect(200)
     .then(({ body }) => {
-      expect(body).to.have.length(5);
+      expect(body).to.have.length(3);
     }));
 
   it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with test filter', async () => (
     request.get(`/api/v1/orgs/${testOrg}/repos?tests=true`)
       .expect(200)
       .then(({ body }) => {
-        expect(body).to.have.length(3);
+        expect(body).to.have.length(2);
       })
   ));
 
-  it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with test filter', async () => (
+  it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with linter filter', async () => (
     request.get(`/api/v1/orgs/${testOrg}/repos?linter=true`)
       .expect(200)
       .then(({ body }) => {
-        expect(body).to.have.length(0);
+        expect(body).to.have.length(2);
       })
   ));
 
-  it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with test filter', async () => (
+  it('retrieve info from endpoint "/api/v1/orgs/:orgName/repos" with maxFiles filter', async () => (
     request.get(`/api/v1/orgs/${testOrg}/repos?maxFiles=200`)
       .expect(200)
       .then(({ body }) => {
