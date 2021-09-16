@@ -73,9 +73,10 @@ module.exports = () => {
             page: (index + 1),
           },
         });
-        await Promise.all(
-          repositories.map(repo => addExtraParameters(org, repo)),
-        );
+        for (let index = 0; index < repositories.length; index++) {
+          const repo = repositories[index];
+          await addExtraParameters(org, repo);
+        }
       }
     };
     return { digestOrgsRepos };
