@@ -87,6 +87,11 @@ module.exports = {
   /** --- Github API endpoints --- */
   github: {
     api: {
+      orgDetails: {
+        url: 'https://api.github.com/orgs/:org',
+        method: 'get',
+        auth,
+      },
       getRepos: {
         url: 'https://api.github.com/orgs/:org/repos',
         method: 'get',
