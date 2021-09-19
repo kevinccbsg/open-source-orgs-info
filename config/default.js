@@ -82,6 +82,8 @@ module.exports = {
       testFiles: ['*.test.js', '*.specs.js', '*.tests.js', '*.spec.js'],
       // number of results on each github request
       requestedRepos: 100,
+      // wait time to free github API
+      waitLimitTime: 30000,
     },
   },
   /** --- Github API endpoints --- */

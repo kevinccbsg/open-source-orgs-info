@@ -1,3 +1,4 @@
+const { sleep } = require('../../../utils');
 /* eslint-disable no-await-in-loop */
 module.exports = () => {
   const start = async ({
@@ -75,6 +76,10 @@ module.exports = () => {
         });
         for (let repositoryIndex = 0; repositoryIndex < repositories.length; repositoryIndex += 1) {
           const repo = repositories[repositoryIndex];
+          if (repositoryIndex % 5 === 0) {
+            logger.info('waiting to free github api limit...');
+            await sleep(config.waitLimitTime);
+          }
           await addExtraParameters(org, repo);
         }
       }

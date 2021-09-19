@@ -7,4 +7,10 @@ module.exports = {
       sql: ['sql/queries', 'test/sql/scripts'],
     },
   },
+  controller: {
+    digest: {
+      // wait time to free github API
+      waitLimitTime: 500,
+    },
+  },
 };
