@@ -4,7 +4,7 @@ module.exports = () => {
     logger, github, store, config,
   }) => {
     const filterInfo = async (org, repoName, query) => {
-      const q = `repo:${org}/${repoName}+${query}`;
+      const q = `repo:${org}/${repoName} ${query}`;
       const { data: repositoryFiles } = await github.searchCode({
         query: {
           q,
@@ -16,7 +16,7 @@ module.exports = () => {
     const queryBuilder = type => files => (
       files.map(file => (
         `${type}:${file}`
-      )).join('+')
+      )).join(' ')
     );
 
     const filesQuery = queryBuilder('filename');
@@ -73,8 +73,8 @@ module.exports = () => {
             page: (index + 1),
           },
         });
-        for (let index = 0; index < repositories.length; index++) {
-          const repo = repositories[index];
+        for (let repositoryIndex = 0; repositoryIndex < repositories.length; repositoryIndex += 1) {
+          const repo = repositories[repositoryIndex];
           await addExtraParameters(org, repo);
         }
       }

@@ -53,44 +53,44 @@ describe('Digest method Tests', () => {
       .reply(200, orgRepos);
     /** -- PR linter requests mock -- */
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+filename:.eslintrc+filename:.eslint.json+filename:.eslint.js')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('rascal filename:.eslintrc filename:.eslint.json filename:.eslint.js')}`)
       .reply(200, rascalLinter);
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+filename:.eslintrc+filename:.eslint.json+filename:.eslint.js')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('systemic-aws-s3 filename:.eslintrc filename:.eslint.json filename:.eslint.js')}`)
       .reply(200, systemicAwsS3Linter);
     // TODO: mood is a forked repository and this search does not work
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+filename:.eslintrc+filename:.eslint.json+filename:.eslint.js')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('mood filename:.eslintrc filename:.eslint.json filename:.eslint.js')}`)
       .reply(200, moodLinter);
     /** -- PR tests requests mock -- */
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+filename:*.test.js+filename:*.specs.js+filename:*.tests.js+filename:*.spec.js')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('rascal filename:*.test.js filename:*.specs.js filename:*.tests.js filename:*.spec.js')}`)
       .reply(200, rascalTest);
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+filename:*.test.js+filename:*.specs.js+filename:*.tests.js+filename:*.spec.js')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('systemic-aws-s3 filename:*.test.js filename:*.specs.js filename:*.tests.js filename:*.spec.js')}`)
       .reply(200, systemicAwsS3Test);
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+filename:*.test.js+filename:*.specs.js+filename:*.tests.js+filename:*.spec.js')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('mood filename:*.test.js filename:*.specs.js filename:*.tests.js filename:*.spec.js')}`)
       .reply(200, moodTest);
     /** -- PR ci requests mock -- */
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+filename:.travis.yml+filename:azure-pipelines.yml')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('rascal filename:.travis.yml filename:azure-pipelines.yml')}`)
       .reply(200, rascalCi);
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+filename:.travis.yml+filename:azure-pipelines.yml')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('systemic-aws-s3 filename:.travis.yml filename:azure-pipelines.yml')}`)
       .reply(200, systemicAwsS3Ci);
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+filename:.travis.yml+filename:azure-pipelines.yml')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('mood filename:.travis.yml filename:azure-pipelines.yml')}`)
       .reply(200, moodCi);
     /** -- PR ci Paths request mock -- */
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('rascal+path:.circleci+path:.github/workflows')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('rascal path:.circleci path:.github/workflows')}`)
       .reply(200, rascalPaths);
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('systemic-aws-s3+path:.circleci+path:.github/workflows')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('systemic-aws-s3 path:.circleci path:.github/workflows')}`)
       .reply(200, systemicAwsS3Paths);
     nock('https://api.github.com')
-      .get(`/search/code?q=repo:${testOrg}/${encodeURIComponent('mood+path:.circleci+path:.github/workflows')}`)
+      .get(`/search/code?q=repo:${testOrg}/${encodeURI('mood path:.circleci path:.github/workflows')}`)
       .reply(200, moodPaths);
     /** -- test assertions -- */
     await controllerAPI.digest.digestOrgsRepos(testOrg);
