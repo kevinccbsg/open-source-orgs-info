@@ -83,7 +83,7 @@ module.exports = {
       // number of results on each github request
       requestedRepos: 100,
       // wait time to free github API
-      waitLimitTime: 30000,
+      waitLimitTime: 63000,
     },
   },
   /** --- Github API endpoints --- */
